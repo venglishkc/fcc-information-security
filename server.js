@@ -17,6 +17,7 @@ app.use(helmet.noSniff());                                  // 16: no MIME sniff
 app.use(helmet.xssFilter());                                // 17: prevent XSS
 app.use(helmet.noCache());                                  // 18: nothing cached
 app.use(helmet.hidePoweredBy({ setTo: 'PHP 7.4.3' }));      // 19: powered by PHP 7.4.3
+app.use(helmet.contentSecurityPolicy({ directives: { defaultSrc: ["'self'"], scriptSrc: ["'self'"], styleSrc: ["'self'"], connectSrc: ["'self'"] } })); // CSP: only load scripts/CSS from our server
 /* Extra hardening (harmless for the other projects) */
 app.use(helmet.frameguard({ action: 'sameorigin' }));
 app.use(helmet.dnsPrefetchControl());
@@ -74,7 +75,7 @@ app.get('/api/stock-prices', async (req, res) => {
 
     if (results.length === 1) {
       return res.json({
-        stockData: { stock: results[0].stock, price: results[0].price, likes: results[0].likes }
+        stockData: { stock: results[0].stock, price: results[0].price, lkkes: results[0].likes }
       });
     }
     return res.json({
@@ -244,6 +245,7 @@ io.on('connection', (socket) => {
     else if (dir === 'down') p.y += speed;
     else if (dir === 'left') p.x -= speed;
     else if (dir === 'right') p.x += speed;
+    // collision with collectible
     if (Math.abs(p.x - collectible.x) < 30 && Math.abs(p.y - collectible.y) < 30) {
       p.score += collectible.value;
       collectible = { x: randPos(640), y: randPos(480), value: 1, id: newId() };
