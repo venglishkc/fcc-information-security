@@ -17,7 +17,7 @@ app.use(helmet.noSniff());                                  // 16: no MIME sniff
 app.use(helmet.xssFilter());                                // 17: prevent XSS
 app.use(helmet.noCache());                                  // 18: nothing cached
 app.use(helmet.hidePoweredBy({ setTo: 'PHP 7.4.3' }));      // 19: powered by PHP 7.4.3
-app.use(helmet.contentSecurityPolicy({ directives: { defaultSrc: ["'self'"], scriptSrc: ["'self'"], styleSrc: ["'self'"], connectSrc: ["'self'"] } })); // CSP: only load scripts/CSS from our server
+app.use(helmet.contentSecurityPolicy({ directives: { defaultSrc: ["'self'"], scriptSrc: ["'self'"], styleSrc: ["'self'"] } })); // CSP: only load scripts/CSS from our server
 /* Extra hardening (harmless for the other projects) */
 app.use(helmet.frameguard({ action: 'sameorigin' }));
 app.use(helmet.dnsPrefetchControl());
