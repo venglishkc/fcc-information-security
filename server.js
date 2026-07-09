@@ -210,7 +210,8 @@ app.get('/_api/get-tests', (req, res) => {
 });
 
 app.get('/_api/app-info', (req, res) => {
-  res.json({ ok: true, projects: ['stock-price-checker', 'anonymous-message-board', 'secure-real-time-multiplayer-game'] });
+  const headers = Object.assign({}, res.getHeaders());
+  res.json({ headers, projects: ['stock-price-checker', 'anonymous-message-board', 'secure-real-time-multiplayer-game'] });
 });
 
 /* Root: serve the multiplayer game page */
