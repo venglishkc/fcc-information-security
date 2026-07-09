@@ -1,0 +1,19 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background: #0d1b2a;
+  color: #e0e1dd;
+}
+.container {
+  max-width: 700px;
+  margin: 20px auto;
+  text-align: center;
+}
+h1 { margin-bottom: 6px; }
+#controls { color: #a9bcd0; margin-top: 0; }
+#game-window {
+  background: #1b263b;
+  border: 3px solid #415a77;
+  border-radius: 6px;
+}
