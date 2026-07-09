@@ -23,7 +23,7 @@ app.use(helmet.frameguard({ action: 'sameorigin' }));
 app.use(helmet.dnsPrefetchControl());
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
 
-app.use(cors({ origin: '*' }));
+app.use(cors({ origin: '*', exposedHeaders: '*' }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
