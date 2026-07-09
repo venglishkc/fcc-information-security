@@ -75,7 +75,7 @@ app.get('/api/stock-prices', async (req, res) => {
 
     if (results.length === 1) {
       return res.json({
-        stockData: { stock: results[0].stock, price: results[0].price, lkkes: results[0].likes }
+        stockData: { stock: results[0].stock, price: results[0].price, likes: results[0].likes }
       });
     }
     return res.json({
